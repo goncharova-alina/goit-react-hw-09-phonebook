@@ -1,27 +1,34 @@
-import React, { useState, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+// import phoneBookSelectors from '../../redux/phoneBook/phoneBook-selectors';
 import phoneBookOperations from '../../redux/phoneBook/phoneBook-operations';
-import phoneBookSelectors from '../../redux/phoneBook/phoneBook-selectors';
-import ErrorPopup from '../ErrorPopup/ErrorPopup';
-import s from './ContactForm.module.css';
+// import ErrorPopup from '../ErrorPopup/ErrorPopup';
+import PropTypes from 'prop-types';
+import s from '../ContactForm/ContactForm.module.css';
 
-export default function ContactForm() {
+export default function ContactEditor({ onSave, data }) {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [errorMessage, setErrorMessage] = useState(null);
+  // const [errorMessage, setErrorMessage] = useState(null);
 
-  const contacts = useSelector(phoneBookSelectors.getAllContacts);
+  // const contacts = useSelector(phoneBookSelectors.getAllContacts);
 
-  const dispatch = useDispatch();
-  const onAddContact = useCallback(
-    (name, number) => dispatch(phoneBookOperations.addContact(name, number)),
+  useEffect(() => {
+    if (data) {
+      setName(data.name);
+      setNumber(data.number);
+    }
+
+    return;
+  }, [data]);
+
+  const onEditContact = useCallback(
+    (id, name, number) =>
+      dispatch(phoneBookOperations.editContact(id, name, number)),
     [dispatch],
   );
-
-  const reset = () => {
-    setName('');
-    setNumber('');
-  };
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -42,23 +49,12 @@ export default function ContactForm() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (contacts.some(contact => contact.name === name)) {
-      setErrorMessage('Этот контакт уже существует');
-
-      setTimeout(() => {
-        setErrorMessage(null);
-      }, 3000);
-      reset();
-      return;
-    }
-
-    onAddContact(name, number);
-    reset();
+    onEditContact(data.id, name, number);
+    onSave();
   };
 
   return (
-    <div>
-      <ErrorPopup message={errorMessage} />
+    <>
       <form className={s.wrapper} onSubmit={handleSubmit} autoComplete="off">
         <label className={s.field}>
           <span className={s.name}>Name</span>
@@ -67,7 +63,7 @@ export default function ContactForm() {
             type="text"
             name="name"
             value={name}
-            placeholder="Enter name"
+            placeholder="Edit name"
             onChange={handleChange}
             required
           />
@@ -79,15 +75,19 @@ export default function ContactForm() {
             type="tel"
             name="number"
             value={number}
-            placeholder="Enter number"
+            placeholder="Edit number"
             onChange={handleChange}
             required
           />
         </label>
         <button className={s.button} type="submit">
-          Add contact
+          Edit contact
         </button>
       </form>
-    </div>
+    </>
   );
 }
+ContactEditor.propTypes = {
+  onSave: PropTypes.func,
+  data: PropTypes.object,
+};

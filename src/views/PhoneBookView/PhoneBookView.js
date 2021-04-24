@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import { CSSTransition } from "react-transition-group";
-import { connect } from "react-redux";
-import phoneBookOperations from "../../redux/phoneBook/phoneBook-operations";
-import phoneBookSelectors from "../../redux/phoneBook/phoneBook-selectors";
-import phoneBookActions from "../../redux/phoneBook/phoneBook-actions";
-import ContactForm from "../../components/ContactForm/ContactForm.js";
-import Filter from "../../components/Filter/Filter.js";
-import ContactList from "../../components/ContactList/ContactList.js";
-import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
-import Loader from "../../components/Loader/Loader";
-import PropTypes from "prop-types";
-import s from "./phoneBookView.module.css";
-import anim from "../../components/animation.module.css";
-import filterAnim from "../../components/Filter/Filter.module.css";
+import React, { Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
+import phoneBookOperations from '../../redux/phoneBook/phoneBook-operations';
+import phoneBookSelectors from '../../redux/phoneBook/phoneBook-selectors';
+import phoneBookActions from '../../redux/phoneBook/phoneBook-actions';
+import ContactForm from '../../components/ContactForm/ContactForm.js';
+import Filter from '../../components/Filter/Filter.js';
+import ContactList from '../../components/ContactList/ContactList.js';
+import ErrorPopup from '../../components/ErrorPopup/ErrorPopup';
+import Loader from '../../components/Loader/Loader';
+import PropTypes from 'prop-types';
+import s from './phoneBookView.module.css';
+import anim from '../../components/animation.module.css';
+import filterAnim from '../../components/Filter/Filter.module.css';
 
 class phoneBookView extends Component {
   static propTypes = {
@@ -71,14 +71,14 @@ class phoneBookView extends Component {
     );
   }
 }
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   contacts: phoneBookSelectors.getAllContacts(state),
   isLoading: phoneBookSelectors.getLoading(state),
   error: phoneBookSelectors.getError(state),
 });
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   fetchContacts: () => dispatch(phoneBookOperations.fetchContacts()),
-  clearFilter: () => dispatch(phoneBookActions.changeFilter("")),
+  clearFilter: () => dispatch(phoneBookActions.changeFilter('')),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(phoneBookView);
