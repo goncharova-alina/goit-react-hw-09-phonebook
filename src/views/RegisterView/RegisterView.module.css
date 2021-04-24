@@ -1,0 +1,86 @@
+.container {
+  min-width: 300px;
+  max-width: 400px;
+  min-height: 350px;
+  height: auto;
+  margin: 2% auto;
+  padding: 1%;
+  background-color: #e4fa85;
+  border-radius: 10px;
+  box-shadow: 5px 7px 4px 0px rgba(9, 145, 16, 0.77);
+}
+.title {
+  margin-bottom: 10px;
+  text-align: center;
+  color: #08831d;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  /* flex-direction: column; */
+  margin-bottom: 20px;
+  align-items: baseline;
+  /* margin-right: 20px; */
+}
+
+.name {
+  margin-right: 50px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  color: #08831d;
+  /* text-transform: uppercase; */
+}
+.email {
+  margin-right: 50px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  color: #08831d;
+}
+.password {
+  margin-right: 15px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  color: #08831d;
+}
+
+.input {
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #0a8f13;
+  border-radius: 10px;
+}
+
+.input:focus {
+  outline: none;
+  border: 1px solid #30ce10;
+  border-radius: 10px;
+  background-color: #e9ffd7;
+}
+
+.button {
+  padding: 10px 15px;
+  max-width: 250px;
+  align-self: center;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #0a8f13;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #55ce10;
+}

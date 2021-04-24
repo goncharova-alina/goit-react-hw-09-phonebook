@@ -1,0 +1,26 @@
+.container {
+  min-height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 100px;
+  margin-bottom: 100px;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 32px;
+  letter-spacing: 5px;
+  color: #08831d;
+}
+.titleSpan {
+  padding-top: 30px;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 72px;
+  letter-spacing: 29px;
+  line-height: 91px;
+  color: #08831d;
+  font-weight: 700;
+}
