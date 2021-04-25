@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './Filter.module.css';
 import phoneBookActions from '../../redux/phoneBook/phoneBook-actions';
@@ -7,9 +7,8 @@ import phoneBookSelectors from '../../redux/phoneBook/phoneBook-selectors';
 export default function Filter() {
   const dispatch = useDispatch();
 
-  const onChangeFilter = useCallback(event =>
-    dispatch(phoneBookActions.changeFilter(event.currentTarget.value)),
-  );
+  const onChangeFilter = event =>
+    dispatch(phoneBookActions.changeFilter(event.currentTarget.value));
   const value = useSelector(phoneBookSelectors.getFilter);
 
   return (

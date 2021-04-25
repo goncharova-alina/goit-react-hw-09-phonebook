@@ -23,9 +23,9 @@ function ContactListItem({ name, number, onDelete, onEditClick }) {
           {name}: {number}
         </div>
         <div>
-          <button className={s.button} type="button" onClick={toggleModal}>
+          {/* <button className={s.button} type="button" onClick={toggleModal}>
             Edit
-          </button>
+          </button> */}
           <button className={s.button} type="button" onClick={onDelete}>
             Delete
           </button>

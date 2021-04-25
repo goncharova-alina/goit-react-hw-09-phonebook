@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
 import s from '../RegisterView/RegisterView.module.css';
@@ -26,12 +26,10 @@ export default function LoginView() {
     }
   };
 
-  const onLogin = useCallback(e => dispatch(authOperations.logIn(e)));
-
   const handleSubmit = e => {
     e.preventDefault();
 
-    onLogin({ email, password });
+    dispatch(authOperations.logIn({ email, password }));
     setEmail('');
     setPassword('');
   };
